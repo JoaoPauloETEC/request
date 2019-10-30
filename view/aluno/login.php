@@ -58,8 +58,9 @@
                   $senha = $_POST['senha'];
                   $password = md5($senha);
                   $sql = MySql::conectar()->prepare("SELECT * FROM `tb_aluno` WHERE ds_email = ? AND ds_senha = ?");
-                  $sql->execute(array($email,$password));
+                  $sql->execute(array($email, $password));
                   if($sql->rowCount() == 1){
+                      
                       $info = $sql->fetch();
                       $_SESSION['loginAluno'] = true;
                       $_SESSION['emailAluno'] = $email;
@@ -68,7 +69,9 @@
                       $_SESSION['nomeAluno'] = $info['nm_aluno'];
                       header('Location: '.INCLUDE_PATH);
                       die();
-                  }else{
+
+                  }
+                  else if($sql->rowCount() == 0){
                       echo '<div class="erro-box">Usúario ou senha incorretos!</div>';
                   }
               }
