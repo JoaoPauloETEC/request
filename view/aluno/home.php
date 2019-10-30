@@ -1,5 +1,7 @@
 <?php
   $listarRequerimento = Painel::caixaEntrada();
+
+  //$visualizar = Painel::visualizarRequerimento();
 ?>
         <div class="row conteudo">
           <div class="col l1 m0 s0">
@@ -71,22 +73,30 @@
                     <?php
                         }
                       }
-                    else{
-                        foreach($listarRequerimento as $key => $value){
+                      else
+                      {
+                        foreach($listarRequerimento as $key => $value)
+                        {
+                          $codigo = $value['cd_requerimento'];
+                          $nome = $value['nm_assunto_requerimento'];
+                          $descricao = $value['ds_requerimento'];
                           $data = $value['dt_envio'];
+                          $visualizado = $value['sg_status'];
   
                           $data = explode("-", $data);
                             
                           list($dia, $mes, $ano) = $data;
                             
                           $data = "$ano/$mes/$dia";
+
+                          if($visualizado == 0)
+                          {
                     ?>
-                    <li>
-                      <a href="#">
+                    <li onclick="var codigo = <?php echo $codigo; ?>; $.post('ajax/formulario.php', { id: codigo }).done(function(data){ window.location.reload(); });">
                         <div class="row email">
                           <div class="row emailTituloData">
                             <div class="col l6 m5 s6">
-                              <b id="tituloEmail"><?php echo $value['nm_assunto_requerimento']; ?></b>
+                              <b name="assunto" id="tituloEmail"><?php echo $nome; ?></b>
                             </div>
                             <div class="col l5 m5 s5">
                               <b id="dataEmail"><?php echo $data; ?></b>
@@ -97,15 +107,39 @@
                           </div>
                           <div class="row emailAssunto">
                             <div class="col l12 m12 s12">
-                              <p id="assuntoEmail"><?php echo $value['ds_requerimento']; ?></p>
+                              <p id="assuntoEmail"><?php echo $descricao; ?></p>
+                            </div>
+                          </div>
+                        </div>
+                    </li>
+                    <?php
+                          }
+                          else
+                          {
+                    ?>
+                    <li>
+                      <a href="#">
+                        <div class="row email">
+                          <div class="row emailTituloData">
+                            <div class="col l6 m5 s6">
+                              <b id="tituloEmail"><?php echo $nome; ?></b>
+                            </div>
+                            <div class="col l5 m5 s5">
+                              <b id="dataEmail"><?php echo $data; ?></b>
+                            </div>
+                          </div>
+                          <div class="row emailAssunto">
+                            <div class="col l12 m12 s12">
+                              <p id="assuntoEmail"><?php echo $descricao; ?></p>
                             </div>
                           </div>
                         </div>
                       </a>
                     </li>
                     <?php
+                          }
+                        } 
                       }
-                    }
                     ?>
                     <!-- <li>
                       <a href="#">
@@ -177,7 +211,7 @@
                 </div>
                 <div class="col l7 m7 s12" id="pdfCol">
                   <div class='container' id="pdfEstilo">
-                    <iframe src="" id="iFrame" scrolling=""></iframe>
+                    <input type="text" id="nomeReq">
                   </div>
                 </div>
               </div>

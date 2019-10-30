@@ -31,42 +31,58 @@
           <div class="row requerimentos">
             <div class="col l4 m4 s12" id="colEmails">
               <ul>
+              <?php
+                
+                $listarRequerimento = Secretario::caixaEntrada();
+
+                foreach($listarRequerimento as $key => $value)
+                {
+                  $codigo = $value['cd_requerimento'];
+                  $nome = $value['nm_assunto_requerimento'];
+                  $descricao = $value['ds_requerimento'];
+                  $data = $value['dt_envio'];
+                  $visualizado = $value['sg_status'];
+                  $funcioario = $value['id_funcionario'];
+
+                  $data = explode("-", $data);
+                    
+                  list($dia, $mes, $ano) = $data;
+                    
+                  $data = "$ano/$mes/$dia";
+
+                  if($visualizado == 1)
+                  {
+              ?>
                 <li>
-                  <a href="#">
-                    <div class="row emailPadding" id="emailsEstilo">
-                      <div class="col l10 m10 s10">
-                        <b id="nomeAluno">Nome do Aluno</b>
-                        <p id="tipoRequerimento">Tipo de requerimento</p>
-                        <p id="dataRequerimento">dd/mm/aaaa</p>
-                      </div>
-                      <div class="col l1 m1 s1">
-                        <i class="fas fa-circle right" id="notifNovo"></i>
-                      </div>
+                  <div class="row emailPadding" id="emailsSelect">
+                    <div class="col l10 m10 s10">
+                      <b id="nomeAluno"><?php echo $nome; ?></b>
+                      <p id="tipoRequerimento"><?php echo $descricao; ?></p>
+                      <p id="dataRequerimento"><?php echo $data; ?></p>
                     </div>
-                  </a>
+                  </div>
                 </li>
-                <li>
-                  <a href="#">
-                    <div class="row emailPadding" id="emailsSelect">
-                      <div class="col l10 m10 s10">
-                        <b id="nomeAluno">Matheus Costa</b>
-                        <p id="tipoRequerimento">Declaração em geral</p>
-                        <p id="dataRequerimento">21/08/2019</p>
-                      </div>
+              <?php
+                  }
+                  else
+                  {
+              ?>
+                <li onclick="var codigo = <?php echo $codigo; ?>; $.post('ajax/exibirRequerimento.php', { id: codigo }).done(function(data){  }, 'json');">
+                  <div class="row emailPadding" id="emailsEstilo">
+                    <div class="col l10 m10 s10">
+                      <b id="nomeAluno"><?php echo $nome; ?></b>
+                      <p id="tipoRequerimento"><?php echo $descricao; ?></p>
+                      <p id="dataRequerimento"><?php echo $data; ?></p>
                     </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="row emailPadding" id="emailsEstilo">
-                      <div class="col l10 m10 s10">
-                        <b id="nomeAluno">Nome do Aluno</b>
-                        <p id="tipoRequerimento">Tipo de requerimento</p>
-                        <p id="dataRequerimento">dd/mm/aaaa</p>
-                      </div>
+                    <div class="col l1 m1 s1">
+                      <i class="fas fa-circle right" id="notifNovo"></i>
                     </div>
-                  </a>
+                  </div>
                 </li>
+              <?php
+                  }
+                }
+              ?>
               </ul>
             </div>
             <div class="col l8 m8 s12" id="colResposta">

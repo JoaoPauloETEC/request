@@ -36,6 +36,8 @@
 
 <body>
 
+    <base base="<?php echo INCLUDE_PATH; ?>" />
+
     <section class="hero is-fullheight" id="heroFull">
         <div class="navbar-fixed">
         <nav class="bgtopo has-navbar-fixed-top">
@@ -239,6 +241,8 @@
     <script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>assets/js/aluno/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>assets/js/aluno/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>assets/js/aluno/comandos.js"></script>
+    <script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>assets/js/aluno/formulario.js"></script>
+    <script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>assets/js/aluno/const.js"></script>
 
     <!-- Materialize -->
     <script type="text/javascript" src="<?php echo INCLUDE_PATH; ?>assets/js/aluno/materialize.min.js"></script>
@@ -248,7 +252,7 @@
 
     <script>
         $(document).ready(function(){
-        $('.sidenav').sidenav();
+            $('.sidenav').sidenav();
         });
 
     </script>

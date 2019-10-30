@@ -1,5 +1,5 @@
 <?php
-  $listarRequerimento = Painel::caixaEntrada();
+  $listarRequerimento = Painel::exibirHistorico();
 ?> 
         <div class="row conteudo">
           <div class="col l1 m0 s0">
@@ -138,7 +138,7 @@
                         else if(isset($_POST['pesquisar'])){
 	                        $pesquisa = $_POST['pesquisar'];
 
-                          $pesquisa = Painel::pesquisaAssunto($pesquisa);
+                          $pesquisa = Painel::pesquisaHistorico($pesquisa);
 
                           foreach($pesquisa as $key => $value){
                             $data = $value['dt_envio'];
