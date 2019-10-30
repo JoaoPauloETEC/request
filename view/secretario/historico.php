@@ -1,3 +1,6 @@
+<?php
+  $listarRequerimento = Secretario::exibirHistorico();
+?> 
 
       <div class="row conteudo">
         <div class="col l2 m0 s0">
@@ -44,12 +47,25 @@
             </div>
 
             <div class="input-field col l3 m3 s6 right">
-              <select class="form-control">
-                <option>Requerimento tipo 1</option>
-                <option>Requerimento tipo 2</option>
-                <option>Requerimento tipo 3</option>
-                <option>Requerimento tipo 4</option>
-              </select>
+              <form id="tipo" class="form-control" onchange="document.getElementById('tipo').submit()" method="post">
+                <select name="tipo" class="form-control">
+                  <option value="" disabled selected>Selecione um tipo</option>
+                  
+                  <?php
+
+                    $tipoRequerimento = Secretario::listarTiposRequerimento();
+
+                    foreach($tipoRequerimento as $key => $value):
+                  ?>
+
+                    <option value="<?php echo $value['nm_assunto_requerimento']; ?>"><?php echo $value['nm_assunto_requerimento']; ?></option>
+                  
+                  <?php
+                    endforeach;
+                  ?>
+
+                </select>
+              </form>
             </div>
 
           </div>
@@ -82,8 +98,31 @@
               <div class="row conteudo">
                 <div class="col l12 m12 s12">
                   <ul>
+
+                  <?php
+                      if(isset($_POST['tipo']))
+                      {
+                        $tipo = $_POST['tipo'];
+
+                        $assunto = Secretario::pesquisaTipo($tipo);
+
+                        foreach($assunto as $key => $value)
+                        {
+                          $codigo = $value['cd_requerimento'];
+                          $aluno = $value['nm_aluno'];
+                          $secretario = $value['nm_funcionario'];
+                          $assunto = $value['nm_assunto_requerimento'];
+                          $data = $value['dt_recebimento'];
+  
+                          $data = explode("-", $data);
+                            
+                          list($dia, $mes, $ano) = $data;
+                            
+                          $data = "$ano/$mes/$dia";
+                  ?>
+
                     <li>
-                      <a href="#">
+                      <a>
                         <div class="row historico" id="conteudoHistorico">
                           <div class="col l1 m1 s12">
                             <label id="checkboxLinha">
@@ -95,87 +134,181 @@
                             <input type="text" value="Protocolo:" id="titleEmail" readonly>
                           </div>
                           <div class="col l2 m2 s8" id="estiloInputEmails">
-                            <input type="text" value="012-2019" id="protocoloInput" readonly>
+                            <input type="text" value="<?php echo $codigo; ?>" id="protocoloInput" readonly>
                           </div>
 
                           <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
                             <input type="text" value="Aluno:" id="titleEmail" readonly>
                           </div>
                           <div class="col l2 m2 s8" id="estiloInputEmails">
-                            <input type="text" value="Matheus Costa" id="alunoInput" readonly>
+                            <input type="text" value="<?php echo $aluno; ?>" id="alunoInput" readonly>
                           </div>
 
                           <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
                             <input type="text" value="Secretário:" id="titleEmail" readonly>
                           </div>
                           <div class="col l2 m2 s8" id="estiloInputEmails">
-                            <input type="text" value="Camila Santos" id="secretarioInput" readonly>
+                            <input type="text" value="<?php echo $secretario; ?>" id="secretarioInput" readonly>
                           </div>
 
                           <div class="col l0 m0 s5 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
                             <input type="text" value="Requerimento:" id="titleEmail" readonly>
                           </div>
                           <div class="col l3 m3 s7" id="estiloInputEmails">
-                            <input type="text" value="Declaração escolar" id="declaracaoInput" readonly>
+                            <input type="text" value="<?php echo $assunto; ?>" id="declaracaoInput" readonly>
                           </div>
 
                           <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only center-align" id="estiloInputEmails">
                             <input type="text" value="Data:" id="titleEmail" readonly>
                           </div>
                           <div class="col l2 m2 s8" id="estiloInputEmails">
-                            <input type="text" value="dd/mm/aaaa" id="dateInput" readonly>
+                            <input type="text" value="<?php echo $data; ?>" id="dateInput" readonly>
                             <i class="fas fa-circle right" id="notifAceito"></i>
                           </div>
                         </div>
                       </a>
                     </li>
-                    <li>
-                      <a href="#">
-                        <div class="row historico" id="conteudoHistorico">
-                          <div class="col l1 m1 s12">
-                            <label id="checkboxLinha">
-                              <input type="checkbox" class="filled-in" name="select" id="checkboxStyle">
-                              <span></span>
-                            </label>
-                          </div>
-                          <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
-                            <input type="text" value="Protocolo:" id="titleEmail" readonly>
-                          </div>
-                          <div class="col l2 m2 s8" id="estiloInputEmails">
-                            <input type="text" value="012-2019" id="protocoloInput" readonly>
-                          </div>
 
-                          <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
-                            <input type="text" value="Aluno:" id="titleEmail" readonly>
-                          </div>
-                          <div class="col l2 m2 s8" id="estiloInputEmails">
-                            <input type="text" value="Matheus Costa" id="alunoInput" readonly>
-                          </div>
+                  <?php
+                        }
+                      }
+                      else if(isset($_POST['pesquisar']))
+                      {
+                        $pesquisa = $_POST['pesquisar'];
 
-                          <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
-                            <input type="text" value="Secretário:" id="titleEmail" readonly>
-                          </div>
-                          <div class="col l2 m2 s8" id="estiloInputEmails">
-                            <input type="text" value="Camila Santos" id="secretarioInput" readonly>
-                          </div>
+                        $pesquisa = Secretario::pesquisaHistorico($pesquisa);
 
-                          <div class="col l0 m0 s5 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
-                            <input type="text" value="Requerimento:" id="titleEmail" readonly>
-                          </div>
-                          <div class="col l3 m3 s7" id="estiloInputEmails">
-                            <input type="text" value="Declaração escolar" id="declaracaoInput" readonly>
-                          </div>
+                        foreach($pesquisa as $key => $value)
+                        {
+                          $data = $value['dt_envio'];
+  
+                          $data = explode("-", $data);
+                            
+                          list($dia, $mes, $ano) = $data;
+                            
+                          $data = "$ano/$mes/$dia";
+                    ?>
 
-                          <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only center-align" id="estiloInputEmails">
-                            <input type="text" value="Data:" id="titleEmail" readonly>
+                      <li>
+                        <a>
+                          <div class="row historico" id="conteudoHistorico">
+                            <div class="col l1 m1 s12">
+                              <label id="checkboxLinha">
+                                <input type="checkbox" class="filled-in" name="select" id="checkboxStyle">
+                                <span></span>
+                              </label>
+                            </div>
+                            <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
+                              <input type="text" value="Protocolo:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l2 m2 s8" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $codigo; ?>" id="protocoloInput" readonly>
+                            </div>
+
+                            <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
+                              <input type="text" value="Aluno:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l2 m2 s8" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $aluno; ?>" id="alunoInput" readonly>
+                            </div>
+
+                            <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
+                              <input type="text" value="Secretário:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l2 m2 s8" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $secretario; ?>" id="secretarioInput" readonly>
+                            </div>
+
+                            <div class="col l0 m0 s5 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
+                              <input type="text" value="Requerimento:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l3 m3 s7" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $assunto; ?>" id="declaracaoInput" readonly>
+                            </div>
+
+                            <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only center-align" id="estiloInputEmails">
+                              <input type="text" value="Data:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l2 m2 s8" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $data; ?>" id="dateInput" readonly>
+                              <i class="fas fa-circle right" id="notifAceito"></i>
+                            </div>
                           </div>
-                          <div class="col l2 m2 s8" id="estiloInputEmails">
-                            <input type="text" value="dd/mm/aaaa" id="dateInput" readonly>
-                            <i class="fas fa-circle right" id="notifNegado"></i>
+                        </a>
+                      </li>
+
+                    <?php
+                        }
+                      }
+                      else
+                      {
+                        foreach($listarRequerimento as $key => $value){
+                          $codigo = $value['cd_requerimento'];
+                          $aluno = $value['nm_aluno'];
+                          $secretario = $value['nm_funcionario'];
+                          $assunto = $value['nm_assunto_requerimento'];
+                          $data = $value['dt_recebimento'];
+
+                          $data = explode("-", $data);
+                            
+                          list($dia, $mes, $ano) = $data;
+                            
+                          $data = "$ano/$mes/$dia";
+                    ?>
+
+                      <li>
+                        <a>
+                          <div class="row historico" id="conteudoHistorico">
+                            <div class="col l1 m1 s12">
+                              <label id="checkboxLinha">
+                                <input type="checkbox" class="filled-in" name="select" id="checkboxStyle">
+                                <span></span>
+                              </label>
+                            </div>
+                            <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
+                              <input type="text" value="Protocolo:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l2 m2 s8" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $codigo; ?>" id="protocoloInput" readonly>
+                            </div>
+
+                            <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
+                              <input type="text" value="Aluno:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l2 m2 s8" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $aluno; ?>" id="alunoInput" readonly>
+                            </div>
+
+                            <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
+                              <input type="text" value="Secretário:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l2 m2 s8" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $secretario; ?>" id="secretarioInput" readonly>
+                            </div>
+
+                            <div class="col l0 m0 s5 hide-on-large-only hide-on-med-only" id="estiloInputEmails">
+                              <input type="text" value="Requerimento:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l3 m3 s7" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $assunto; ?>" id="declaracaoInput" readonly>
+                            </div>
+
+                            <div class="col l0 m0 s4 hide-on-large-only hide-on-med-only center-align" id="estiloInputEmails">
+                              <input type="text" value="Data:" id="titleEmail" readonly>
+                            </div>
+                            <div class="col l2 m2 s8" id="estiloInputEmails">
+                              <input type="text" value="<?php echo $data; ?>" id="dateInput" readonly>
+                              <i class="fas fa-circle right" id="notifAceito"></i>
+                            </div>
                           </div>
-                        </div>
-                      </a>
-                    </li>
+                        </a>
+                      </li>
+
+                    <?php
+                        }
+                      }
+                    ?>
+
                   </ul>
                 </div>
               </div>

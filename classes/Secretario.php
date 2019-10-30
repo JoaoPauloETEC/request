@@ -49,6 +49,53 @@
 			return $sql->fetchAll();
 
 		}
+		
+		
+		public static function pesquisaTipo($texto){
+
+            $sql = MySql::conectar()->prepare("
+				SELECT cd_requerimento, nm_aluno, nm_funcionario, nm_assunto_requerimento, dt_recebimento 
+				FROM tb_tipo_requerimento 
+				RIGHT JOIN tb_requerimento ON cd_tipo_requerimento = id_tipo_requerimento 
+				LEFT JOIN tb_funcionario ON cd_funcionario = id_funcionario 
+				LEFT JOIN tb_aluno ON cd_aluno = id_aluno
+	            WHERE nm_assunto_requerimento = '$texto';
+            ");
+
+            $sql->execute();
+			
+			return $sql->fetchAll();
+
+		}
+
+		public static function listarTiposRequerimento(){
+
+            $sql = MySql::conectar()->prepare("
+            	SELECT *
+	            FROM tb_tipo_requerimento t;
+            ");
+
+            $sql->execute();
+			
+			return $sql->fetchAll();
+
+		}
+
+		public static function exibirHistorico(){
+
+            $sql = MySql::conectar()->prepare("
+			SELECT cd_requerimento, nm_aluno, nm_funcionario, nm_assunto_requerimento, dt_recebimento 
+			FROM tb_tipo_requerimento 
+			RIGHT JOIN tb_requerimento ON cd_tipo_requerimento = id_tipo_requerimento 
+			LEFT JOIN tb_funcionario ON cd_funcionario = id_funcionario 
+			LEFT JOIN tb_aluno ON cd_aluno = id_aluno;
+            ");
+
+            $sql->execute();
+			
+			return $sql->fetchAll();
+
+		}
 
 		// public static function exibirRequerimento()
 		// {	

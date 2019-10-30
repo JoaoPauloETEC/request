@@ -86,6 +86,7 @@
                 <div class="hero-body" id="heroHistorico">
                   <div class="container emailsHistorico">
                     <ul id="emails">
+                    <!-- Pesquisa por tipo -->
                     <?php
                         if(isset($_POST['tipo'])){
 	                        $tipo = $_POST['tipo'];
@@ -101,6 +102,7 @@
                               
                             $data = "$ano/$mes/$dia";
                     ?>
+
                     <li>
                       <a href="#">
                         <div class="row historico" id="conteudoHistorico">
@@ -132,6 +134,7 @@
                         </div>
                       </a>
                     </li>
+                    
                     <?php
                           }
                         }
