@@ -50,7 +50,7 @@
                   <i class="fas fa-chevron-down"></i>
                 </button>
                 <ul class="dropdown-menu" id="dropdownSecretarioEstilo">
-                  <li><a href="<?php echo INCLUDE_PATH_SECRETARIO; ?>perfil">Meu Perfil</a></li>
+                  <li><a data-target="modalSec" class="modal-trigger" href="#modalSec">Meu Perfil</a></li>
                   <li><a href="<?php echo INCLUDE_PATH_SECRETARIO; ?>?loggout">Sair</a></li>
                 </ul>
               </div>
@@ -74,7 +74,7 @@
         </a>
       </li>
       <li>
-        <a href="<?php echo INCLUDE_PATH_SECRETARIO; ?>perfil" class="waves-effect" id="opcoesMenuMobile">
+        <a data-target="modalSec" href="#modalSec" class="waves-effect modal-trigger" id="opcoesMenuMobile">
           <i class="material-icons" id="opcoesMenuMobile">person
           </i>Minha conta
         </a>
@@ -96,7 +96,7 @@
             </a>
           </li>
           <li>
-            <a href="<?php echo INCLUDE_PATH_SECRETARIO; ?>perfil">
+            <a data-target="modalSec" class="modal-trigger" href="#modalSec">
               <span><i class="material-icons">person</i></span>
                Minha conta
             </a>
@@ -104,6 +104,10 @@
         </ul>
       </aside>
     </section>
+
+    <?php
+      include 'perfilSec.php';
+    ?>
 
     <section class="hero is-fullheight-with-navbar" id="heroFullHeight">
       <?php
