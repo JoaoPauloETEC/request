@@ -50,7 +50,7 @@
                   <i class="fas fa-chevron-down"></i>
                 </button>
                 <ul class="dropdown-menu" id="dropdownAdministradorEstilo">
-                  <li><a href="perfil.html">Meu Perfil</a></li>
+                  <li><a data-target="modalAdm" class="modal-trigger" href="#modalAdm">Meus dados</a></li>
                   <li><a href="<?php echo INCLUDE_PATH_ADMIN; ?>?loggout">Sair</a></li>
                 </ul>
               </div>
@@ -79,8 +79,8 @@
         </a>
       </li>
       <li>
-        <a href="<?php echo INCLUDE_PATH_ADMIN; ?>perfil" class="waves-effect" id="opcoesMenuMobile">
-          <i class="material-icons" id="opcoesMenuMobile">person</i>Minha Conta
+        <a id="opcoesMenuMobile" data-target="modalAdm" class="waves-effect modal-trigger" href="#modalAdm">
+          <i class="material-icons" id="opcoesMenuMobile">person</i>Meus dados
         </a>
       </li>
     </ul>
@@ -106,15 +106,17 @@
             </a>
           </li>
           <li>
-            <a href="<?php echo INCLUDE_PATH_ADMIN; ?>perfil">
+            <a data-target="modalAdm" class="modal-trigger" href="#modalAdm">
               <span><i class="material-icons">person</i></span>
-               Minha conta
+               Meus dados
             </a>
           </li>
         </ul>
       </aside>
     </section>
-
+    <?php
+      include 'perfilAdm.php';
+    ?>
     <section class="hero is-fullheight-with-navbar" id="heroFullHeight">
       <?php
         if(file_exists($url.'.php'))
