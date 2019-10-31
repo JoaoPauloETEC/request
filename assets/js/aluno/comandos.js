@@ -36,33 +36,33 @@ function toggle(source) {
   }
 }
 
-$(document).ready(function() {
-  $('.form2').hide();
-  $('.form3').hide();
-  $("#radio_1").prop("checked", true);
-});
+// $(document).ready(function() {
+//   $('.form2').hide();
+//   $('.form3').hide();
+//   $("#radio_1").prop("checked", true);
+// });
 
 $(document).ready(function(){
   $('.modal').modal();
 });
 
-$('input[name="group1"]').change(function () {
-    if ($('input[name="group1"]:checked').val() === "1") {
-        $('.form1').show();
-        $('.form2').hide();
-        $('.form3').hide();
-    }
-    else if ($('input[name="group1"]:checked').val() === "2") {
-        $('.form2').show();
-        $('.form1').hide();
-        $('.form3').hide();
-    }
-    else if ($('input[name="group1"]:checked').val() === "3") {
-        $('.form3').show();
-        $('.form1').hide();
-        $('.form2').hide();
-    }
-});
+// $('input[name="group1"]').change(function () {
+//     if ($('input[name="group1"]:checked').val() === "1") {
+//         $('.form1').show();
+//         $('.form2').hide();
+//         $('.form3').hide();
+//     }
+//     else if ($('input[name="group1"]:checked').val() === "2") {
+//         $('.form2').show();
+//         $('.form1').hide();
+//         $('.form3').hide();
+//     }
+//     else if ($('input[name="group1"]:checked').val() === "3") {
+//         $('.form3').show();
+//         $('.form1').hide();
+//         $('.form2').hide();
+//     }
+// });
 
 $(document).on('click','.toggle-password',function(){
   $(this).toggleClass("fa-eye fa-eye-slash");

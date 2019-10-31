@@ -2,10 +2,10 @@
 
     include('../../config.php');
 
-    if(Administrador::logado() == true){
+    if(Administrador::logado() == false){
         include('../secretario/login.php');
     }else{
-        $_SESSION['loginAdministrador'] = true;
+        //$_SESSION['loginAdministrador'] = true;
         include('main.php');
     }
     

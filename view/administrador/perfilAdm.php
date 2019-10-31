@@ -1,3 +1,4 @@
+    <link rel="stylesheet" href="../../assets/css/administrador/estilo.css">
     <div id="modalAdm" class="modal modal-fixed-footer">
       <div class="modal-content" id="modalStyleAdm">
         <button href="#!" class="modal-close waves-effect waves-green" id="agreeButton">Agree</button>
@@ -90,7 +91,7 @@
       </div>
       <div class="modal-footer" id="modalFooAdm">
         <button type="button" class="button is-dark" id="modalSalvar">Salvar</button>
-        <button type="button" class="button is-light" id="modalCancelar" onclick="javascript:location.href='curso.html'">Cancelar</button>
+        <button type="button" class="button is-light" id="modalCancelar" onclick="javascript:location.href=''">Cancelar</button>
       </div>
 
     </div>

@@ -115,7 +115,7 @@
       </aside>
     </section>
     <?php
-      include 'perfilAdm.php';
+        include 'perfilAdm.php';
     ?>
     <section class="hero is-fullheight-with-navbar" id="heroFullHeight">
       <?php
