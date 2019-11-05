@@ -2,8 +2,22 @@
 	include('../config.php');
     
 
-	$_SESSION['codigoRequerimento'] = $_POST['id'];
+	$codigo = $_POST['id'];
 
-	Painel::exibirRequerimento($_SESSION['codigoRequerimento']);
+	$exibe =  Painel::exibirRequerimento($codigo);
+
+	foreach($exibe as $key => $value){
+		$id = $value['cd_requerimento'];
+		$assunto = $value['nm_assunto_requerimento'];
+	}
+
+	$registro = array(
+		'requerimento' => array(
+			'id' => $id,
+			'assunto' => $assunto
+		)
+	);
+
+	echo json_encode($registro);
 	
 ?>

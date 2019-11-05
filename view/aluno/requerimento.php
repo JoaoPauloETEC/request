@@ -29,23 +29,12 @@
                     include('formularios/form2.php');//Se tudo der certo manda pro form2
                   }
 
-                  //Primeiro Button para retornar a pagina anterior
-                  else if(isset($_POST['anterior']))
-                  {
-                    include('formularios/form1.php');
-                  }
-
                   //Se ele enviar os dados do assunto e enviar, entra nesse IF
                   else if(isset($_POST['formulario']))
                   {
                     $_SESSION['descricao'] = $_POST['descricao'];
 
                     include('formularios/form3.php');
-                  }
-                  //Segundo Button para retornar a pagina anterior
-                  else if(isset($_POST['anterior2']))
-                  {
-                    include('formularios/form2.php');
                   }
 
                   //Se ele confirmar os dados e enviar entra nesse IF

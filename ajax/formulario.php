@@ -1,9 +1,11 @@
 <?php
-	include('../config.php');
+	require('../config.php');
     
 
-	$_SESSION['codigoRequerimento'] = $_POST['id'];
+	$codigo = $_POST['id'];
 
-	Painel::verificarVisualizacao($_SESSION['codigoRequerimento']);
+	Painel::verificarVisualizacao($codigo);
+
+	echo $codigo;
 	
 ?>

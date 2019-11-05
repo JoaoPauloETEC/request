@@ -1,9 +1,6 @@
 <?php
   $listarRequerimento = Painel::caixaEntrada();
 
-    if(Painel::preencherDados() == true){
-        echo "<script>alert('preencher campos');</script>";
-    }
   //$visualizar = Painel::visualizarRequerimento();
 ?>
         <div class="row conteudo">
@@ -95,7 +92,8 @@
                           if($visualizado == 0)
                           {
                     ?>
-                    <li onclick="var codigo = <?php echo $codigo; ?>; $.post('ajax/formulario.php', { id: codigo }).done(function(data){ window.location.reload(); });">
+
+                    <li onclick=" var codigo = <?php echo $codigo; ?>; verificarVisualizacao(codigo); ">
                         <div class="row email">
                           <div class="row emailTituloData">
                             <div class="col l6 m5 s6">
@@ -120,24 +118,23 @@
                           else
                           {
                     ?>
-                    <li>
-                      <a href="#">
-                        <div class="row email">
-                          <div class="row emailTituloData">
-                            <div class="col l6 m5 s6">
-                              <b id="tituloEmail"><?php echo $nome; ?></b>
-                            </div>
-                            <div class="col l5 m5 s5">
-                              <b id="dataEmail"><?php echo $data; ?></b>
-                            </div>
+
+                    <li onclick=" var codigo = <?php echo $codigo; ?>; exibirRequerimento(codigo); ">
+                      <div class="row email">
+                        <div class="row emailTituloData">
+                          <div class="col l6 m5 s6">
+                            <b id="tituloEmail"><?php echo $nome; ?></b>
                           </div>
-                          <div class="row emailAssunto">
-                            <div class="col l12 m12 s12">
-                              <p id="assuntoEmail"><?php echo $descricao; ?></p>
-                            </div>
+                          <div class="col l5 m5 s5">
+                            <b id="dataEmail"><?php echo $data; ?></b>
                           </div>
                         </div>
-                      </a>
+                        <div class="row emailAssunto">
+                          <div class="col l12 m12 s12">
+                            <p id="assuntoEmail"><?php echo $descricao; ?></p>
+                          </div>
+                        </div>
+                      </div>
                     </li>
                     <?php
                           }
