@@ -32,6 +32,35 @@
 
 		}
 
+        public static function preencherDados(){
+
+			$codigo = $_SESSION['codigoAluno'];
+            $sql = MySql::conectar()->prepare("
+            	SELECT *
+	            FROM tb_aluno
+                WHERE cd_aluno = ?;
+            ");
+            $sql->execute(array($codigo));
+	
+            $resultado = $sql->fetchAll();
+            if($resultado[0]['nr_rg'] === null){
+                return true;
+            }else if($resultado[0]['nm_turma'] === null){
+                return true;
+            }else if($resultado[0]['nm_logradouro'] === null){
+                return true;
+            }else if($resultado[0]['nr_logradouro'] === null){
+                return true;
+            }else if($resultado[0]['nm_bairro'] === null){
+                return true;
+            }else if($resultado[0]['nm_cidade'] === null){
+                return true;
+            }else if($resultado[0]['nr_telefone'] === null){
+                return true;
+            }
+			return false;
+		}
+
 		public static function verificarVisualizacao($codReq){
 
 			$codigo = $codReq;
@@ -56,6 +85,22 @@
 	            INNER JOIN tb_requerimento r ON t.cd_tipo_requerimento = r.id_tipo_requerimento
 	            INNER JOIN tb_aluno a ON a.cd_aluno = r.id_aluno
 	            WHERE id_aluno = ?;
+            ");
+
+            $sql->execute(array($codigo));
+			
+			return $sql->fetchAll();
+
+		}
+
+        public static function exibirDadosPessoais(){
+
+			$codigo = $_SESSION['codigoAluno'];
+
+            $sql = MySql::conectar()->prepare("
+            	SELECT *
+	            FROM tb_aluno
+                WHERE cd_aluno = ?;
             ");
 
             $sql->execute(array($codigo));

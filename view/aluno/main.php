@@ -7,6 +7,7 @@
     $url = isset($_GET['url']) ? $_GET['url'] : 'home';
 
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -95,8 +96,7 @@
         <ul class="sidenav" id="mobile-demo">
         <li>
             <a href="<?php echo INCLUDE_PATH; ?>perfil" class="waves-effect" id="opcoesMenuMobile">
-            <i class="material-icons" id="opcoesMenuMobile">person
-            </i>Meu Perfil
+            <i class="material-icons" id="opcoesMenuMobile">person</i>Meu Perfil
             </a>
         </li>
 

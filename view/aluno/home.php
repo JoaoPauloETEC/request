@@ -1,6 +1,9 @@
 <?php
   $listarRequerimento = Painel::caixaEntrada();
 
+    if(Painel::preencherDados() == true){
+        echo "<script>alert('preencher campos');</script>";
+    }
   //$visualizar = Painel::visualizarRequerimento();
 ?>
         <div class="row conteudo">
