@@ -29,6 +29,7 @@
   <!-- Framework Bulma e Font Awesome -->
   <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>assets/css/template/all.css">
   <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>assets/css/aluno/bulma.min.css">
+  <link rel="stylesheet" href="<?php echo INCLUDE_PATH; ?>assets/css/aluno/bulma-steps.css">
 
   <!-- Materialize - Para o navegador saber que o site é optimizado para dispositivos móveis -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>

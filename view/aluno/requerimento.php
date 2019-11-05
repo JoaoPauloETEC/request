@@ -75,24 +75,26 @@
                 <div class="col l6 m6 s12">
                   <div class="hero-body" id="heroEtapasRequerimento">
                     <div class="container" id="etapasRequerimento">
-                      <div class="row" id="radio1">
-                        <label>
-                          <input name="group1" value="1" type="radio" id="radio_1">
-                          <span id="radioText">Selecionar tipo de Requerimento</span>
-                        </label>
-                      </div>
-                      <div class="row" id="radio2">
-                        <label>
-                          <input name="group1" value="2" type="radio" id="radio">
-                          <span id="radioText">Preencher formulário</span>
-                        </label>
-                      </div>
-                      <div class="row" id="radio3">
-                        <label>
-                          <input name="group1" value="3" type="radio" id="radio">
-                          <span id="radioText">Confirmar dados pessoais</span>
-                        </label>
-                      </div>
+                      <ul class="steps is-vertical">
+                        <li class="steps-segment">
+                          <span href="#" class="steps-marker"></span>
+                          <div class="steps-content">
+                            <p class="has-text-weight-bold title is-size-4">Selecionar tipo de Requerimento</p>
+                          </div>
+                        </li>
+                        <li class="steps-segment is-active">
+                          <span href="#" class="steps-marker"></span>
+                          <div class="steps-content">
+                            <p class="has-text-weight-bold title is-size-4">Preencher formulário</p>
+                          </div>
+                        </li>
+                        <li class="steps-segment">
+                          <span href="#" class="steps-marker"></span>
+                          <div class="steps-content">
+                            <p class="has-text-weight-bold title is-size-4">Confirmar dados pessoais</p>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                 </div>
