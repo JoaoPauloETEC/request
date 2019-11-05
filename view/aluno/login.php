@@ -67,12 +67,17 @@
                       $_SESSION['passwordAluno'] = $password;
                       $_SESSION['codigoAluno'] = $info['cd_aluno'];
                       $_SESSION['nomeAluno'] = $info['nm_aluno'];
+                      
+                      if(Painel::preencherDados() == true){
+                        header('Location: '.INCLUDE_PATH.'perfil');
+                        die();
+                      }
+
                       header('Location: '.INCLUDE_PATH);
                       die();
-
                   }
                   else if($sql->rowCount() == 0){
-                      echo '<div class="erro-box">Usúario ou senha incorretos!</div>';
+                      $_SESSION['info'] = 'erro';
                   }
               }
             ?>
@@ -80,6 +85,18 @@
             <!-- Formulario para entrar -->
             <form method="post">
               <div class="row">
+                <?php
+                    if(isset($_SESSION['info'])) {
+                        if($_SESSION['info'] == 'erro'){
+                            echo '<div class="alert alert-danger" style="text-align: center;">Dados de login incorretos</div>';
+                            $_SESSION['info'] = 'false';
+                        }else if($_SESSION['info'] == 'success'){
+                            echo '<div class="alert alert-success" style="text-align: center;">Cadastro realizado com sucesso</div>';
+                            $_SESSION['info'] = 'false';
+                        }
+                        
+                    }
+                ?>
                 <div class="row">
                   <div class="col l3 m3 s0">
                   </div>
@@ -250,6 +267,12 @@
                 $password = md5($senha);
                 $sql = MySql::conectar()->prepare("INSERT INTO tb_aluno (cd_aluno, nm_aluno, nr_rm, ds_tipoAluno, ds_email, ds_senha) VALUES (null, ?, ?, ?, ?, ?)");
                 $sql->execute(array($nome,$rm,$aluno,$email,$password));
+                if($sql->rowCount() == 1){
+                    $_SESSION['info'] = 'success';
+                }
+                else if($sql->rowCount() == 0){
+                    $_SESSION['info'] = 'erroCadastro';
+                }
               }
             ?>
 

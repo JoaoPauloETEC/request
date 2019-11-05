@@ -14,15 +14,15 @@
     spl_autoload_register($autoload);
      
 
-    define('INCLUDE_PATH','http://request.unaux.com/');
+    define('INCLUDE_PATH','http://request.etec.unaux.com/');
     define('INCLUDE_PATH_SECRETARIO',INCLUDE_PATH.'view/secretario/');
     define('INCLUDE_PATH_ADMIN',INCLUDE_PATH.'view/administrador/');
     
     //Conectar com Banco de Dados
-    define('HOST','sql208.unaux.com');
-    define('USER','unaux_24573504');
-    define('PASSWORD','request');
-    define('DATABASE','unaux_24573504_requerimento');
+    define('HOST','sql300.unaux.com');
+    define('USER','unaux_24713842');
+    define('PASSWORD','u5h34f');
+    define('DATABASE','unaux_24713842_request');
     
     //Funções
     function pegaAssunto($assunto){
