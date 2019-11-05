@@ -22,7 +22,10 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="col l12 m12 s12">
+                          <div class="col l6 m6 s6">
+                            <button type="submit" class="btn right" name="anterior" id="botaoAnterior">Anterior</button>
+                          </div>
+                          <div class="col l6 m6 s6">
                             <button type="submit" class="btn right" name="formulario" id="botaoProximo2">Próximo</button>
                           </div>
                         </div>

@@ -580,6 +580,14 @@ div.row.emailAssunto{
   border-radius: 7px;
 }
 
+#botaoAnterior{	
+  color: rgb(0, 0, 0);	
+  background-color: #c4bfbf;	
+  margin-top: 10%;	
+  font-weight: bold;	
+  border-radius: 7px;	
+}
+
 /*Requerimento formulario parte 2*/
 #heroAssuntoRequerimento{
   align-items: center;
