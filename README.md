@@ -11,9 +11,9 @@
 > Gerencie uma escola com um aplicativo ágil e intuitivo que ajudará sua instituiçãoa crescer 🚀
 
 <br />
-<p align="center"><img src="https://github.com/joaoqsl/request/blob/master/assets/images/FlowMap-min.jpg"/></p>
-<p align="center"><img src="https://github.com/joaoqsl/request/blob/master/assets/images/adm.jpg"/></p>
-<p align="center"><img src="https://github.com/joaoqsl/request/blob/master/assets/images/home.jpg"/></p>
+<p align="center"><img width="400" src="https://github.com/joaoqsl/request/blob/master/assets/images/FlowMap-min.jpg"/></p>
+<p align="center"><img width="400" src="https://github.com/joaoqsl/request/blob/master/assets/images/adm.jpg"/></p>
+<p align="center"><img width="400" src="https://github.com/joaoqsl/request/blob/master/assets/images/home.jpg"/></p>
 
 ---
 
