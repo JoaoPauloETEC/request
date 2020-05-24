@@ -5,8 +5,8 @@
 # Rquest
 
 ![PHP](https://img.shields.io/static/v1?label=php&message=language&color=red&flat-square&logo=php)
-![JS](img.shields.io/static/v1?label=JavaScript&message=languages&color=red&flat-square&logo=javascript)
-![STATUS](https://img.shields.io/static/v1?label=status&message=concluido&color=red&flat-square&logo=php)
+![JS](https://img.shields.io/static/v1?label=JavaScript&message=languages&color=red&flat-square&logo=JAVASCRIPT)
+![STATUS](https://img.shields.io/static/v1?label=status&message=concluido&color=red&flat-square&logo=)
 
 > Gerencie uma escola com um aplicativo ágil e intuitivo que ajudará sua instituiçãoa crescer 🚀
 
