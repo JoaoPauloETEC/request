@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="https://github.com/joaoqsl/request/blob/master/assets/images/FlowMap-min.jpg" width="200"/>
+   <img src="https://github.com/joaoqsl/request/blob/master/assets/images/FlowMap-min.jpg" width="400"/>
 </p>
 
 # Request
