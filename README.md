@@ -1,26 +1,26 @@
 <p align="center">
-   <img src="https://github.com/joaoqsl/request/blob/master/assets/images/Logobeta.png" width="300"/>
+   <img src="https://github.com/joaoqsl/request/blob/master/assets/images/FlowMap-min.jpg" width="200"/>
 </p>
 
 # Request
 
 ![PHP](https://img.shields.io/static/v1?label=php&message=language&color=red&flat-square&logo=php)
-![JS](https://img.shields.io/static/v1?label=JavaScript&message=languages&color=red&flat-square&logo=JAVASCRIPT)
+![JS](https://img.shields.io/static/v1?label=javascript&message=languages&color=red&flat-square&logo=JAVASCRIPT)
 ![STATUS](https://img.shields.io/static/v1?label=status&message=concluido&color=red&flat-square&logo=)
 
 > Gerencie uma escola com um aplicativo ágil e intuitivo que ajudará sua instituição crescer :rocket:
 
 <br />
-<p align="center"><img width="500" src="https://github.com/joaoqsl/request/blob/master/assets/images/FlowMap-min.jpg"/></p>
+<p align="center"><img width="500" src="https://github.com/joaoqsl/request/blob/master/assets/images/funcionario.jpg"/></p>
 <p align="center"><img width="500" src="https://github.com/joaoqsl/request/blob/master/assets/images/adm.jpg"/></p>
 <p align="center"><img width="500" src="https://github.com/joaoqsl/request/blob/master/assets/images/home.jpg"/></p>
 
 ---
 
-# :pushpin: Table of Contents
+# :pushpin: Tópicos
 
 * [Features](#rocket-features)
-* [Descrição](#package-descriçao)
+* [Descrição](#package-descricao)
 * [Desenvolvedores](#man_technologist-desenvolvedores)
 * [License](#page_facing_up-license)
 
